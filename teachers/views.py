@@ -16,7 +16,7 @@ class TeacherList(APIView):
         teachers = Teacher.objects.filter(description__icontains=q)
         serializer = TeacherSerializer(teachers, many=True)
         return Response(serializer.data)
-    
+
     def post(self, request):
         serializer = TeacherSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

@@ -49,7 +49,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "core.apps.CoreConfig",
     "teachers.apps.TeachersConfig",
-    # "students.apps.StudentsConfig",
+    "students.apps.StudentsConfig",
     # "accounts.apps.AccountsConfig",
 ]
 
@@ -143,5 +143,4 @@ AUTH_USER_MODEL = "teachers.Teacher"
 
 REST_FRAMEWORK = {
     "COERCE_DECIMAL_TO_STRING": False,
-    
 }
