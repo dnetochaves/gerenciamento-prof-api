@@ -19,7 +19,7 @@ class StudentList(APIView):
 
 
 class TeacherStudentList(APIView):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         students = request.user.students.all()

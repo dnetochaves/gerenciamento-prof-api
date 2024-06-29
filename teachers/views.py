@@ -22,3 +22,10 @@ class TeacherList(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class MeView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        serializer = TeacherSerializer(request.user)
+        return Response(serializer.data)
