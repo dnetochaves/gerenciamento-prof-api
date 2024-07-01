@@ -25,3 +25,5 @@ class TeacherStudentList(APIView):
         students = request.user.students.all()
         serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
+
+
