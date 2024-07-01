@@ -45,7 +45,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-    # "corsheaders",
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -60,6 +60,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -148,7 +149,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    #"EXCEPTION_HANDLER": "core.handlers.custom_exception_handler",
+    "EXCEPTION_HANDLER": "core.handlers.custom_exception_handler",
 }
 
 SIMPLE_JWT = {
@@ -164,3 +165,6 @@ SIMPLE_JWT = {
     "TOKEN_REFRESH_SERIALIZER": "accounts.serializers.CustomTokenRefreshSerializer",
     "TOKEN_BLACKLIST_SERIALIZER": "accounts.serializers.CustomTokenBlacklistSerializer",
 }
+
+
+CORS_ALLOW_ALL_ORIGINS = True

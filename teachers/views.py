@@ -12,6 +12,7 @@ from .serializers import TeacherProfileImageSerializer, TeacherSerializer
 
 class TeacherList(APIView):
     permission_classes = (TeacherListPermission,)
+
     def get(self, request):
         q = request.query_params.get("q", "")
         teachers = Teacher.objects.filter(description__icontains=q)
@@ -23,7 +24,7 @@ class TeacherList(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
     def put(self, request):
         serializer = TeacherSerializer(request.user, data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -33,6 +34,7 @@ class TeacherList(APIView):
     def delete(self, request):
         request.user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class MeView(APIView):
     permission_classes = (IsAuthenticated,)
